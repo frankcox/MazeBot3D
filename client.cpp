@@ -1,6 +1,6 @@
 // =====================================================================================
 // 
-//    Author       : Frank Lyon Cox - frank.l.cox@gmail.com - All rights reserved
+//    Author       : Frank Lyon Cox - frank.l.cox@gmail.com
 //    Date Created : 6/2/2012
 //
 //    Description  : 
