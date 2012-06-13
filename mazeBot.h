@@ -5,7 +5,7 @@
 //       Revision:  none
 //       Compiler:  g++
 // 
-//         Author:  Frank L Cox, frank.l.cox@gmail.com - All rights reserved
+//         Author:  Frank L Cox, frank.l.cox@gmail.com 
 // 
 //    Description: Third cut at a Maze Bot class. See file ABOUT for description
 //    of problem.
