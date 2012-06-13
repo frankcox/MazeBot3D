@@ -29,6 +29,7 @@ B####
 ..#..
 .....
 
+
 The method printPathe() will print "Not Escapable" if no path to the exit is found. Otherwise, "Escapable" is printed along with a shortest path. For example:
 
 Escapable SSSEEEEUNNNU
