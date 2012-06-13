@@ -10,16 +10,17 @@ A bot begins in a 3D maze inside the cell "start", and tries to find the shortes
 
 The program knows that location of the end point but doesn't use it to find the route. It only uses it to identify the exit. That's an arbitrary rule of this version of the game. It would be interesting to try to apply the ideas in the A* algorithum to speed things up in big open playgrounds. Give it a try!
 
-Also, The lack of diagonals means the path SESESE 
+    Also, The lack of diagonals means the path SESESE 
 
-x
- x
-  x
+    x
+     x
+      x
 
-is the same length as SSSEEE: 
-x
-x
-xxx
+    is the same length as SSSEEE: 
+
+    x
+    x
+    xxx
 
 #It would be interesting to add diagonals. This would be tedious with the current code but totally doable. 
 
