@@ -22,7 +22,7 @@ The program knows that location of the end point but doesn't use it to find the 
     x
     xxx
 
-#It would be interesting to add diagonals. This would be tedious with the current code but totally doable. 
+It would be interesting to add diagonals. This would be tedious with the current code but totally doable. 
 
 
 DATA FILE FORMAT:
