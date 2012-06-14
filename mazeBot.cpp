@@ -163,68 +163,31 @@ namespace us_munging_cpp {
 
         while (not done) {
             if (DEBUG) {std::cout << std::endl << round++ <<"))))) "; showPoint("thisPoint", thisPoint); }
-            foundOne = false;
 
             // find closest unvisited to thisPoint (look N S E W U D)
             // North
-            if (thisPoint.y -1 >= 0 and ! playground[thisPoint.z][thisPoint.y -1][thisPoint.x].solid
-                                    and ! playground[thisPoint.z][thisPoint.y -1][thisPoint.x].visited) {
-                foundOne = true;
-                toPoint.x = thisPoint.x;
-                toPoint.y = thisPoint.y -1;
-                toPoint.z = thisPoint.z;
-                checkNode(thisPoint, toPoint);
-            }
+            toPoint.x = thisPoint.x;  toPoint.y = thisPoint.y -1;  toPoint.z = thisPoint.z;
+            checkNode(thisPoint, toPoint);
 
             // South
-            if (thisPoint.y +1 < mb_height and ! playground[thisPoint.z][thisPoint.y +1][thisPoint.x].solid 
-                                           and ! playground[thisPoint.z][thisPoint.y +1][thisPoint.x].visited) {
-                foundOne = true;
-                toPoint.x = thisPoint.x;
-                toPoint.y = thisPoint.y +1;
-                toPoint.z = thisPoint.z;
-                checkNode(thisPoint, toPoint);
-            }
+            toPoint.x = thisPoint.x;  toPoint.y = thisPoint.y +1;  toPoint.z = thisPoint.z;
+            checkNode(thisPoint, toPoint);
             
             // East
-            if (thisPoint.x +1 < mb_width and ! playground[thisPoint.z][thisPoint.y][thisPoint.x +1].solid 
-                                          and ! playground[thisPoint.z][thisPoint.y][thisPoint.x +1].visited) {
-                foundOne = true;
-                toPoint.x = thisPoint.x +1;
-                toPoint.y = thisPoint.y;
-                toPoint.z = thisPoint.z;
-                checkNode(thisPoint, toPoint);
-            }
+            toPoint.x = thisPoint.x +1;  toPoint.y = thisPoint.y; toPoint.z = thisPoint.z;
+            checkNode(thisPoint, toPoint);
             
             // West
-            if (thisPoint.x -1 >= 0 and ! playground[thisPoint.z][thisPoint.y][thisPoint.x -1].solid 
-                                    and ! playground[thisPoint.z][thisPoint.y][thisPoint.x -1].visited) {
-                foundOne = true;
-                toPoint.x = thisPoint.x -1;
-                toPoint.y = thisPoint.y;
-                toPoint.z = thisPoint.z;
-                checkNode(thisPoint, toPoint);
-            }
+            toPoint.x = thisPoint.x -1;  toPoint.y = thisPoint.y;  toPoint.z = thisPoint.z;
+            checkNode(thisPoint, toPoint);
 
             // Up
-            if (thisPoint.z +1 < mb_depth and ! playground[thisPoint.z +1][thisPoint.y][thisPoint.x].solid 
-                                           and ! playground[thisPoint.z +1][thisPoint.y][thisPoint.x].visited) {
-                foundOne = true;
-                toPoint.x = thisPoint.x;
-                toPoint.y = thisPoint.y;
-                toPoint.z = thisPoint.z +1;
-                checkNode(thisPoint, toPoint);
-            }
+            toPoint.x = thisPoint.x;  toPoint.y = thisPoint.y;  toPoint.z = thisPoint.z +1;
+            checkNode(thisPoint, toPoint);
 
             // Down
-            if (thisPoint.z -1 >= 0 and ! playground[thisPoint.z -1][thisPoint.y][thisPoint.x].solid 
-                                    and ! playground[thisPoint.z -1][thisPoint.y][thisPoint.x].visited) {
-                foundOne = true;
-                toPoint.x = thisPoint.x;
-                toPoint.y = thisPoint.y;
-                toPoint.z = thisPoint.z -1;
-                checkNode(thisPoint, toPoint);
-            }
+            toPoint.x = thisPoint.x;  toPoint.y = thisPoint.y;  toPoint.z = thisPoint.z -1;
+            checkNode(thisPoint, toPoint);
 
             setVisited(thisPoint);
 
@@ -260,20 +223,24 @@ namespace us_munging_cpp {
     
     void MazeBot::checkNode(const Point &from, const Point &to) {
 
-        if (getPathLength(to) > getPathLength(to) +1) {
-            playground[to.z][to.y][to.x].pathLength = getPathLength(from) +1;
-            playground[to.z][to.y][to.x].fromPoint = from;
-        }
+        if (to.x >= 0 and to.y >= 0 and to.z >= 0 and to.x < mb_width and to.y < mb_height and to.z < mb_depth
+            and not playground[to.z][to.y][to.x].solid and not playground[to.z][to.y][to.x].visited)  {
 
-        // put in list in sorted order...
-        if ( toExplore.empty() or getPathLength(to) >= getPathLength(toExplore.back()) ) {
-            toExplore.push_back(to);
-        }
-        else {
-            for (std::list<Point>::iterator it = toExplore.begin(); it != toExplore.end(); it++) {
-                if (getPathLength(*it) < getPathLength(to)) {
-                    it = toExplore.insert(it, to);
-                    break;
+            if (getPathLength(to) > getPathLength(to) +1) {
+                playground[to.z][to.y][to.x].pathLength = getPathLength(from) +1;
+                playground[to.z][to.y][to.x].fromPoint = from;
+            }
+
+            // put in list in sorted order...
+            if ( toExplore.empty() or getPathLength(to) >= getPathLength(toExplore.back()) ) {
+                toExplore.push_back(to);
+            }
+            else {
+                for (std::list<Point>::iterator it = toExplore.begin(); it != toExplore.end(); it++) {
+                    if (getPathLength(*it) < getPathLength(to)) {
+                        it = toExplore.insert(it, to);
+                        break;
+                    }
                 }
             }
         }
