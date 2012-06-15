@@ -20,8 +20,7 @@
 //            always explore the shortest path, we can just follow the fromPoint's back to
 //            start to have the shortest path. If toExplore is empty we are stuck.
 //
-//            or the toExplore list is empty.
-//
+//            
 //
 //    Version      : 3.0a
 //    Revision     : none
