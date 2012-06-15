@@ -54,4 +54,12 @@ The method printPath() will print "Not Escapable" if no path to the exit is foun
 
 Escapable SSSEEEEUNNNU
 
+How to Build
+------------
+
+I built this with g++ on Linux but it should build on any modern C++. 
+There's a simple Make file if you use Make, but "g++ client.cpp" on the command
+line should be all you need. If you use Make the executable is mazebot.exe.
+
+
 
