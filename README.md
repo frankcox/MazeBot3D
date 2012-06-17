@@ -28,7 +28,7 @@ It would be interesting to add diagonals. This would be tedious with the current
 DATA FILE FORMAT
 ----------------
 
-The first line in the text based maze format is a number representing the number of levels in the maze. The next n lines are the rows and columns of the bottom level. Then there is one space and the next level, which must have the same width and height as the first. And so on, up to the number of levels. A "#" is a solid cell which the bot can't pass through. A "." is an empty cell that the bot can move into, and leave, in one of up to six directions: North, South, East, West, Up, Down. The outside boundaries of the maze are also solid, and there is, at most, one exit. The beginning point has a "B" and the end point has a "E". There will be one each of B and E and they can be anywhere on any level.
+The first line in the text based maze file format is a number representing the number of levels in the maze. The next n lines are the rows and columns of the bottom level. Then there is one space and the next level, which must have the same width and height as the first. And so on, up to the number of levels. A "#" is a solid cell which the bot can't pass through. A "." is an empty cell that the bot can move into, and leave, in one of up to six directions: North, South, East, West, Up, Down. The outside boundaries of the maze are also solid, and there is, at most, one exit. The beginning point has a "B" and the end point has a "E". There will be one each of B and E and they can be anywhere on any level.
 
 
 EXAMPLE:
