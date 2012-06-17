@@ -250,7 +250,7 @@ namespace us_munging_cpp {
 
 
 
-    void MazeBot::setVisited(Point p) {
+    void MazeBot::setVisited(const Point &p) {
         // set this node visited and erase all references to this point in toExplore
         playground[p.z][p.y][p.x].visited = true;
         for (std::list<Point>::iterator it = toExplore.begin(); it != toExplore.end(); it++) {

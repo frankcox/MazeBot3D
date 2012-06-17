@@ -40,9 +40,7 @@ namespace us_munging_cpp {
 
     class MazeBot {
         private:
-            int mb_height;
-            int mb_width;
-            int mb_depth;
+            int mb_height, mb_width, mb_depth;
             static const int MAX_INT; // "infinity"
             struct Point {int x; int y; int z;} start, end;
             struct Node {
@@ -56,7 +54,7 @@ namespace us_munging_cpp {
             void findMazeSize(const char *filename);
             void checkNode(const Point &from, const Point &to);
             int getPathLength(const Point &point);
-            void setVisited(Point p);
+            void setVisited(const Point &p);
 
         public:
             MazeBot(const char *filename);
