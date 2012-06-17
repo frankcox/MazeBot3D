@@ -7,7 +7,7 @@
 // 
 //         Author:  Frank L Cox, frank.l.cox@gmail.com 
 // 
-//    Description: Third cut at a Maze Bot class. See file ABOUT for description
+//    Description: Third cut at a Maze Bot class. See file README for description
 //    of problem.
 //
 //    Constructor takes a file name for the map .dat file. It returns an object with
