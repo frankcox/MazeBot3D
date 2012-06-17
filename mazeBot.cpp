@@ -16,9 +16,9 @@
 //            listings of the current node point from toExplore. For the next round take 
 //            the shortest path length point from toExplore and repeat.
 //
-//            If we are examining the end point we are done and can escape. Since we 
-//            always explore the shortest path, we can just follow the fromPoint's back to
-//            start to have the shortest path. If toExplore is empty we are stuck.
+//            If we are examining the end point, and it's marked visited, we're done and can 
+//            escape. Since we always explore the shortest path, we can just follow the fromPoint's 
+//            back to start to have the shortest path. If toExplore is empty we are stuck.
 //
 //            
 //
