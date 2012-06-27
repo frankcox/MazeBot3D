@@ -225,7 +225,7 @@ namespace us_munging_cpp {
         if (to.x >= 0 and to.y >= 0 and to.z >= 0 and to.x < mb_width and to.y < mb_height and to.z < mb_depth
             and not playground[to.z][to.y][to.x].solid and not playground[to.z][to.y][to.x].visited)  {
 
-            if (getPathLength(to) > getPathLength(to) +1) {
+            if (getPathLength(to) > (getPathLength(from) +1)) {
                 playground[to.z][to.y][to.x].pathLength = getPathLength(from) +1;
                 playground[to.z][to.y][to.x].fromPoint = from;
             }
