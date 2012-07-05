@@ -58,7 +58,7 @@ How to Build
 ------------
 
 I built this with g++ on Linux but it should build on any modern C++. 
-There's a simple Make file if you use Make, but "g++ client.cpp" on the command
+There's a simple Make file, but "g++ client.cpp" on the command
 line should be all you need. If you use Make the executable is mazebot.exe.
 
 
