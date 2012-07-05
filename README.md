@@ -1,7 +1,7 @@
 MazeBot3D
 =========
 
-A C++ class which tries to solves a text based 3D maze in the shortest path using a adaptation of Dijstra's algorithm.
+A C++ class which tries to solves a text based 3D maze in the shortest path using a adaptation of Dijkstra's algorithm.
 
 THE GAME
 --------
@@ -22,7 +22,7 @@ The program knows the location of the end point but doesn't use it to find the r
     x
     xxx
 
-It would be interesting to add diagonals. This would be tedious with the current code but totally doable. Of course we'd have to come up with names for all the, what? Twenty something new directions... And why stop there? Why not just cut loose and use 3D vectors of any direction? Dijstra's could still handle it!
+It would be interesting to add diagonals. This would be tedious with the current code but totally doable. Of course we'd have to come up with names for all the, what? Twenty something new directions... And why stop there? Why not just cut loose and use 3D vectors of any direction? Dijkstra's could still handle it!
 
 
 DATA FILE FORMAT
