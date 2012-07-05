@@ -5,7 +5,7 @@
 //
 //    Description  : A third cut at implementing a single class Maze Bot. 
 //
-//            escape() is inspired by Dijstra's algorithm except the edges are not
+//            escape() is inspired by Dijkstra's algorithm except the edges are not
 //            known at the start. Nodes are discovered by exploring and all edges are 
 //            length 1. For each node with the shortest path, starting with 'start', 
 //            examen all reachable, unvisited, adjacent nodes. Assign a tentative
@@ -150,7 +150,7 @@ namespace us_munging_cpp {
 
 
 
-    // Inspired by Dijstra but all paths are not know at the start. 
+    // Inspired by Dijkstra but all paths are not know at the start. 
     // Uses checkNode() and setVisited()
     void MazeBot::escape() {
         Point thisPoint, toPoint;
