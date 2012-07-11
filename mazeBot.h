@@ -55,7 +55,7 @@ namespace us_munging_cpp {
             void checkNode(const Point &from, const Point &to);
             int getPathLength(const Point &point);
             void setVisited(const Point &p);
-            void initJSON();
+            void jsonMap();
             bool createJSON;
 
         public:

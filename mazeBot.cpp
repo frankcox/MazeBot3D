@@ -369,31 +369,39 @@ namespace us_munging_cpp {
 
     void MazeBot::setJSON () {
         createJSON = true;
-        initJSON();
+        jsonMap();
     }
 
 
 
 
 
-    void MazeBot::initJSON() {
+    void MazeBot::jsonMap() {
+        std::cout << "[" << std::endl;
         for (int d = 0; d < mb_depth; d++) {
-            std::cout << "[" << std::endl;
+            std::cout << "  [" << std::endl;
             for (int h = 0; h < mb_height; h++) {
-                std::cout << "  [" << std::endl;
+                std::cout << "    [ ";
                 for (int w = 0; w < mb_width; w++) {
-                    std::cout << "    [{" << std::endl;
-
-                    (w < mb_width -1) ? std::cout << "    }]," << std::endl : std::cout << "    }]" << std::endl;
+                    std::cout << "[{" << "\"solid\":";
+                    playground[d][h][w].solid ? std::cout << "true" : std::cout << "false";
+                    std::cout << ",\"pathLength\":"; 
+                    (playground[d][h][w].pathLength == MAX_INT) ? std::cout<<"\"inf\"" 
+                                                                : std::cout<<playground[d][h][w].pathLength;
+                    std::cout << ",\"fromPoint\":";
+                    std::cout << "[" << playground[d][h][w].fromPoint.x 
+                              << "," << playground[d][h][w].fromPoint.y 
+                              << "," << playground[d][h][w].fromPoint.z << "]";
+                    std::cout << ",\"visited\":"; 
+                    playground[d][h][w].visited ? std::cout << "true" : std::cout << "false";
+                    (w < mb_width -1) ? std::cout << "}]," : std::cout << "}]";
                 }
 
-                (h < mb_height -1) ? std::cout << "   ],"<< std::endl : std::cout << "  ]" << std::endl;
+                (h < mb_height -1) ? std::cout << " ],"<< std::endl : std::cout << " ]" << std::endl;
             }
 
-           (d < mb_depth -1) ?  std::cout << "]," << std::endl :  std::cout << "]" << std::endl;
+           (d < mb_depth -1) ?  std::cout << "  ]," << std::endl :  std::cout << "  ]" << std::endl;
         }
+        std::cout << "]" << std::endl;
     }
-
-
-
 };
