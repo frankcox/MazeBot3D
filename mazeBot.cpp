@@ -155,7 +155,7 @@ namespace us_munging_cpp {
     void MazeBot::escape() {
         Point thisPoint, toPoint;
         thisPoint = start;
-        bool done = false, foundOne = false;
+        bool done = false;
         int round = 1;
         std::vector<Point>::iterator it;
 
@@ -191,7 +191,7 @@ namespace us_munging_cpp {
             setVisited(thisPoint);
 
             // Now, check if we have exit, if not, then...
-            // Take the shortest from toExplore (head(), since it's sorted)
+            // Take the shortest from toExplore (front(), since it's sorted)
             // If toExplore is empty we are done -- and probably stuck
 
             if (thisPoint.x == end.x and thisPoint.y == end.y and thisPoint.y == end.y 
