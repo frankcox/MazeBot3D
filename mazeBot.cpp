@@ -55,6 +55,7 @@ namespace us_munging_cpp {
         in.open(filename);
         assert(in != NULL);
         getline(in, line);
+        createJSON = false;
 
         start.x = -1; start.y = -1;
         end.x = -1; end.y = -1;
@@ -360,6 +361,37 @@ namespace us_munging_cpp {
 
     void MazeBot::showPoint(std::string name, const Point &p) {
         std::cout << name << "[" << p.x << ", " << p.y << ", " << p.z << "]" << std::endl;
+    }
+
+
+
+
+
+    void MazeBot::setJSON () {
+        createJSON = true;
+        initJSON();
+    }
+
+
+
+
+
+    void MazeBot::initJSON() {
+        for (int d = 0; d < mb_depth; d++) {
+            std::cout << "[" << std::endl;
+            for (int h = 0; h < mb_height; h++) {
+                std::cout << "  [" << std::endl;
+                for (int w = 0; w < mb_width; w++) {
+                    std::cout << "    [{" << std::endl;
+
+                    (w < mb_width -1) ? std::cout << "    }]," << std::endl : std::cout << "    }]" << std::endl;
+                }
+
+                (h < mb_height -1) ? std::cout << "   ],"<< std::endl : std::cout << "  ]" << std::endl;
+            }
+
+           (d < mb_depth -1) ?  std::cout << "]," << std::endl :  std::cout << "]" << std::endl;
+        }
     }
 
 

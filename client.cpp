@@ -21,6 +21,7 @@ using namespace std;
 
 int main() {
     MazeBot mb = MazeBot("maze.dat");
+    mb.setJSON();
 //  mb.show();
     mb.escape();
     mb.printPath();
