@@ -377,7 +377,13 @@ namespace us_munging_cpp {
 
 
     void MazeBot::jsonMap() {
-        std::cout << "[" << std::endl;
+        std::cout << "{ \"start\":[" << start.x << "," << start.y << "," << start.z << "]," << std::endl;
+        std::cout << "\"end\":[" << end.x << "," << end.y << "," << end.z << "]," << std::endl;
+        std::cout << "\"mb_height\":" << mb_height << "," << std::endl;
+        std::cout << "\"mb_width\":" << mb_width << "," << std::endl;
+        std::cout << "\"mb_depth\":" << mb_depth << "," << std::endl;
+
+        std::cout << "\"map\":[" << std::endl;
         for (int d = 0; d < mb_depth; d++) {
             std::cout << "  [" << std::endl;
             for (int h = 0; h < mb_height; h++) {
@@ -402,6 +408,6 @@ namespace us_munging_cpp {
 
            (d < mb_depth -1) ?  std::cout << "  ]," << std::endl :  std::cout << "  ]" << std::endl;
         }
-        std::cout << "]" << std::endl;
+        std::cout << "]}" << std::endl;
     }
 };
