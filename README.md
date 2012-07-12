@@ -13,8 +13,8 @@ The program knows the location of the end point but doesn't use it to find the r
     Also, The lack of diagonals means the path SESE 
 
     x
-     x
-      x
+    xx
+     xx
 
     is the same length as SSEE
 
