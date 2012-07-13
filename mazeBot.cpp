@@ -41,7 +41,7 @@
 namespace us_munging_cpp {
 
     const int MazeBot::MAX_INT = std::numeric_limits<int>::max();
-    const bool DEBUG = false;
+    const bool DEBUG = true;
 
 
 
@@ -157,12 +157,12 @@ namespace us_munging_cpp {
         Point thisPoint, toPoint;
         thisPoint = start;
         bool done = false;
-        int round = 1;
         std::vector<Point>::iterator it;
 
+        round = 1;
 
         while (not done) {
-            if (DEBUG) {std::cout << std::endl << round++ <<"))))) "; showPoint("thisPoint", thisPoint); }
+            if (DEBUG) {std::cout << std::endl << round <<"))))) "; showPoint("thisPoint", thisPoint); }
 
             // find closest unvisited to thisPoint (look N S E W U D)
             // North
@@ -209,6 +209,8 @@ namespace us_munging_cpp {
                     done = true;
                 }
             }
+
+            round++;
 
             if (DEBUG) show();
             if (DEBUG) printList();
@@ -377,37 +379,44 @@ namespace us_munging_cpp {
 
 
     void MazeBot::jsonMap() {
-        std::cout << "{ \"start\":[" << start.x << "," << start.y << "," << start.z << "]," << std::endl;
-        std::cout << "\"end\":[" << end.x << "," << end.y << "," << end.z << "]," << std::endl;
-        std::cout << "\"mb_height\":" << mb_height << "," << std::endl;
-        std::cout << "\"mb_width\":" << mb_width << "," << std::endl;
-        std::cout << "\"mb_depth\":" << mb_depth << "," << std::endl;
+        std::ofstream jfile;
+        jfile.open("game.json", std::ios::out);
 
-        std::cout << "\"map\":[" << std::endl;
-        for (int d = 0; d < mb_depth; d++) {
-            std::cout << "  [" << std::endl;
-            for (int h = 0; h < mb_height; h++) {
-                std::cout << "    [ ";
-                for (int w = 0; w < mb_width; w++) {
-                    std::cout << "[{" << "\"solid\":";
-                    playground[d][h][w].solid ? std::cout << "true" : std::cout << "false";
-                    std::cout << ",\"pathLength\":"; 
-                    (playground[d][h][w].pathLength == MAX_INT) ? std::cout<<"\"inf\"" 
-                                                                : std::cout<<playground[d][h][w].pathLength;
-                    std::cout << ",\"fromPoint\":";
-                    std::cout << "[" << playground[d][h][w].fromPoint.x 
-                              << "," << playground[d][h][w].fromPoint.y 
-                              << "," << playground[d][h][w].fromPoint.z << "]";
-                    std::cout << ",\"visited\":"; 
-                    playground[d][h][w].visited ? std::cout << "true" : std::cout << "false";
-                    (w < mb_width -1) ? std::cout << "}]," : std::cout << "}]";
+        if (jfile.is_open()) {
+            jfile << "{ \"start\":[" << start.x << "," << start.y << "," << start.z << "]," << std::endl;
+            jfile << "\"end\":[" << end.x << "," << end.y << "," << end.z << "]," << std::endl;
+            jfile << "\"mb_height\":" << mb_height << "," << std::endl;
+            jfile << "\"mb_width\":" << mb_width << "," << std::endl;
+            jfile << "\"mb_depth\":" << mb_depth << "," << std::endl;
+
+            jfile << "\"map\":[" << std::endl;
+            for (int d = 0; d < mb_depth; d++) {
+                jfile << "  [" << std::endl;
+                for (int h = 0; h < mb_height; h++) {
+                    jfile << "    [ ";
+                    for (int w = 0; w < mb_width; w++) {
+                        jfile << "[{" << "\"solid\":";
+                        playground[d][h][w].solid ? jfile << "true" : jfile << "false";
+                        jfile << ",\"pathLength\":"; 
+                        (playground[d][h][w].pathLength == MAX_INT) ? jfile<<"\"inf\"" 
+                                                                    : jfile<<playground[d][h][w].pathLength;
+                        jfile << ",\"fromPoint\":";
+                        jfile << "[" << playground[d][h][w].fromPoint.x 
+                                  << "," << playground[d][h][w].fromPoint.y 
+                                  << "," << playground[d][h][w].fromPoint.z << "]";
+                        jfile << ",\"visited\":"; 
+                        playground[d][h][w].visited ? jfile << "true" : jfile << "false";
+                        (w < mb_width -1) ? jfile << "}]," : jfile << "}]";
+                    }
+
+                    (h < mb_height -1) ? jfile << " ],"<< std::endl : jfile << " ]" << std::endl;
                 }
 
-                (h < mb_height -1) ? std::cout << " ],"<< std::endl : std::cout << " ]" << std::endl;
+               (d < mb_depth -1) ?  jfile << "  ]," << std::endl :  jfile << "  ]" << std::endl;
             }
+            jfile << "]" << std::endl;
 
-           (d < mb_depth -1) ?  std::cout << "  ]," << std::endl :  std::cout << "  ]" << std::endl;
+            jfile.close();
         }
-        std::cout << "]}" << std::endl;
     }
 };

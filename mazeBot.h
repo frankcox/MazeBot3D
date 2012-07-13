@@ -40,7 +40,7 @@ namespace us_munging_cpp {
 
     class MazeBot {
         private:
-            int mb_height, mb_width, mb_depth;
+            int mb_height, mb_width, mb_depth, round;
             static const int MAX_INT; // "infinity"
             struct Point {int x; int y; int z;} start, end;
             struct Node {

@@ -24,7 +24,7 @@ mazebot: client.o
 
 
 clean:
-	rm -f *.obj *core *.exe  *.stackdump *.o
+	rm -f *.obj *core *.exe  *.stackdump *.o *.json
 
 run:
 	./mazebot.exe
