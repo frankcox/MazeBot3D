@@ -37,12 +37,14 @@
 #include <assert.h>
 #include <limits>
 #include "mazeBot.h"
+#include "mazeBotJSON.h"
 
 namespace us_munging_cpp {
 
     const int MazeBot::MAX_INT = std::numeric_limits<int>::max();
-    const bool DEBUG = true;
+    const bool DEBUG = false;
 
+    MazeBotJSON mbjson;
 
 
 
@@ -154,6 +156,7 @@ namespace us_munging_cpp {
     // Inspired by Dijkstra but all paths are not know at the start. 
     // Uses checkNode() and setVisited()
     void MazeBot::escape() {
+
         Point thisPoint, toPoint;
         thisPoint = start;
         bool done = false;
@@ -371,52 +374,12 @@ namespace us_munging_cpp {
 
     void MazeBot::setJSON () {
         createJSON = true;
-        jsonMap();
+        mbjson.jsonMap(*this);
     }
 
 
 
 
 
-    void MazeBot::jsonMap() {
-        std::ofstream jfile;
-        jfile.open("game.json", std::ios::out);
 
-        if (jfile.is_open()) {
-            jfile << "{ \"start\":[" << start.x << "," << start.y << "," << start.z << "]," << std::endl;
-            jfile << "\"end\":[" << end.x << "," << end.y << "," << end.z << "]," << std::endl;
-            jfile << "\"mb_height\":" << mb_height << "," << std::endl;
-            jfile << "\"mb_width\":" << mb_width << "," << std::endl;
-            jfile << "\"mb_depth\":" << mb_depth << "," << std::endl;
-
-            jfile << "\"map\":[" << std::endl;
-            for (int d = 0; d < mb_depth; d++) {
-                jfile << "  [" << std::endl;
-                for (int h = 0; h < mb_height; h++) {
-                    jfile << "    [ ";
-                    for (int w = 0; w < mb_width; w++) {
-                        jfile << "[{" << "\"solid\":";
-                        playground[d][h][w].solid ? jfile << "true" : jfile << "false";
-                        jfile << ",\"pathLength\":"; 
-                        (playground[d][h][w].pathLength == MAX_INT) ? jfile<<"\"inf\"" 
-                                                                    : jfile<<playground[d][h][w].pathLength;
-                        jfile << ",\"fromPoint\":";
-                        jfile << "[" << playground[d][h][w].fromPoint.x 
-                                  << "," << playground[d][h][w].fromPoint.y 
-                                  << "," << playground[d][h][w].fromPoint.z << "]";
-                        jfile << ",\"visited\":"; 
-                        playground[d][h][w].visited ? jfile << "true" : jfile << "false";
-                        (w < mb_width -1) ? jfile << "}]," : jfile << "}]";
-                    }
-
-                    (h < mb_height -1) ? jfile << " ],"<< std::endl : jfile << " ]" << std::endl;
-                }
-
-               (d < mb_depth -1) ?  jfile << "  ]," << std::endl :  jfile << "  ]" << std::endl;
-            }
-            jfile << "]" << std::endl;
-
-            jfile.close();
-        }
-    }
 };

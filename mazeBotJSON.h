@@ -18,6 +18,11 @@
 namespace us_munging_cpp {
 
     class MazeBotJSON {
+        private: 
+
+        public:
+            void printDepth(MazeBot &mb);
+            void jsonMap(const MazeBot &mb);
     
     };
 

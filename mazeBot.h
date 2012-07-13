@@ -59,6 +59,7 @@ namespace us_munging_cpp {
             bool createJSON;
 
         public:
+            friend class MazeBotJSON;
             MazeBot(const char *filename);
             void escape();
             void printPath();
