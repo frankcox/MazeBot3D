@@ -14,14 +14,23 @@
 #ifndef MAZEBOTJSON_H
 #define MAZEBOTJSON_H
 
+#include <vector>
 
 namespace us_munging_cpp {
 
+
     class MazeBotJSON {
         private: 
+            struct Point {int x; int y; int z;} start, end;
+            struct change {
+                Point node;
+                int pathLength;
+                Point fromPoint;
+                bool visited;
+            };
+            std::vector<change> moves;
 
         public:
-            void printDepth(MazeBot &mb);
             void jsonMap(const MazeBot &mb);
     
     };
