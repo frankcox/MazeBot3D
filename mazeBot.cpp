@@ -194,7 +194,7 @@ namespace us_munging_cpp {
             // Take the shortest from toExplore (front(), since it's sorted)
             // If toExplore is empty we are done -- and probably stuck
 
-            if (thisPoint.x == end.x and thisPoint.y == end.y and thisPoint.y == end.y 
+            if (thisPoint.x == end.x and thisPoint.y == end.y and thisPoint.z == end.z 
                 and playground[end.z][end.y][end.x].visited) {
 
                 done = true;
