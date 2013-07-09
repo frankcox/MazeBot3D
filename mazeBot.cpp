@@ -150,7 +150,7 @@ namespace us_munging_cpp {
 
 
 
-    // Inspired by Dijkstra but all paths are not know at the start. 
+    // Inspired by Dijkstra but all paths are not known at the start. 
     // Uses checkNode() and setVisited()
     void MazeBot::escape() {
         Point thisPoint, toPoint;
